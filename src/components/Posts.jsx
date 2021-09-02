@@ -15,38 +15,6 @@ class Posts extends Component {
     render() { 
         return (
             <div class="post-container">
-                <div class="post">
-                    <div class="post-user-info">
-                        <p>Erik</p>
-                        <p>Today</p>
-                    </div>
-                    <p class="post-user-comment">Hey Dwindle can you check under there for me?</p>
-                    <div class="divider"></div>
-                    <input class="post-comment-box" placeholder="Type a reply..."></input>
-                    <div class="post-user-comments">
-                        <div class="comment">
-                            <div class="post-user-info">
-                                <p>Erik</p>
-                                <p>Today</p>
-                            </div>
-                            <p class="post-user-comment">Hey Dwindle can you check under there for me?</p>
-                        </div>
-                        <div class="comment">
-                            <div class="post-user-info">
-                                <p>Erik</p>
-                                <p>Today</p>
-                            </div>
-                            <p class="post-user-comment">Hey Dwindle can you check under there for me?</p>
-                        </div>
-                        <div class="comment">
-                            <div class="post-user-info">
-                                <p>Erik</p>
-                                <p>Today</p>
-                            </div>
-                            <p class="post-user-comment">Hey Dwindle can you check under there for me?</p>
-                        </div>
-                    </div>
-                </div>
                 <div>
                     {this.state.posts.map(post => {
 
@@ -61,6 +29,22 @@ class Posts extends Component {
                                 <p class="post-user-comment">{post.post}</p>
                                 <div class="divider"></div>
                                 <input class="post-comment-box" placeholder="Type a reply..."></input>
+                                <div class="post-user-comments">
+                                    {post.comments.map(comment => {
+
+                                        comment.date = new Date(Date.parse(post.date)).toUTCString();
+
+                                        return(
+                                            <div class="comment">
+                                                <div class="post-user-info">
+                                                    <p>{comment.username}</p>
+                                                    <p>{comment.date}</p>
+                                                </div>
+                                                <p class="post-user-comment">{comment.post}</p>
+                                            </div>
+                                        )
+                                    })}
+                                </div>
                             </div>
                         )
                     })}
