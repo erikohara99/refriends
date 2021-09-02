@@ -23,7 +23,7 @@ app.get("/posts", async (req, res) => {
     try{
         const posts = await Post
             .find({})
-            .sort({date: 1})
+            .sort({date: -1})
             .lean();
         
         res.status(200).send(posts);

@@ -50,13 +50,13 @@ class Posts extends Component {
                 <div>
                     {this.state.posts.map(post => {
 
-                        var date = new Date(Date.parse(post.date)).toUTCString();
+                        post.date = new Date(Date.parse(post.date)).toUTCString();
 
                         return(
                             <div class="post">
                                 <div class="post-user-info">
                                     <p>{post.username}</p>
-                                    <p>{date}</p>
+                                    <p>{post.date}</p>
                                 </div>
                                 <p class="post-user-comment">{post.post}</p>
                                 <div class="divider"></div>

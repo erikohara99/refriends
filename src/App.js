@@ -1,9 +1,14 @@
+import React from 'react';
 import './App.css';
+import PostBox from './components/PostBox';
 import Posts from './components/Posts';
 
 function App() {
   return (
-    <Posts />
+    <React.Fragment>
+      <PostBox />
+      <Posts />
+    </React.Fragment>
   );
 }
 
