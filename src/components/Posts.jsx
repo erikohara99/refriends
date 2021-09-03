@@ -7,40 +7,40 @@ class Posts extends Component {
     }
 
     async componentDidMount() {
-        const response = await axios.get("http://localhost:3000/posts");
+        const response = await axios.get("http://108.183.209.49:3000/posts");
         console.log(response.data);
         this.setState({posts: response.data});
     }
 
     render() { 
         return (
-            <div class="post-container">
+            <div className="post-container">
                 <div>
                     {this.state.posts.map(post => {
 
                         post.date = new Date(Date.parse(post.date)).toUTCString();
 
                         return(
-                            <div class="post">
-                                <div class="post-user-info">
+                            <div className="post">
+                                <div className="post-user-info">
                                     <p>{post.username}</p>
                                     <p>{post.date}</p>
                                 </div>
-                                <p class="post-user-comment">{post.post}</p>
-                                <div class="divider"></div>
-                                <input class="post-comment-box" placeholder="Type a reply..."></input>
-                                <div class="post-user-comments">
+                                <p className="post-user-comment">{post.post}</p>
+                                <div className="divider"></div>
+                                <input className="post-comment-box" placeholder="Type a reply..."></input>
+                                <div className="post-user-comments">
                                     {post.comments.map(comment => {
 
                                         comment.date = new Date(Date.parse(post.date)).toUTCString();
 
                                         return(
-                                            <div class="comment">
-                                                <div class="post-user-info">
+                                            <div className="comment">
+                                                <div className="post-user-info">
                                                     <p>{comment.username}</p>
                                                     <p>{comment.date}</p>
                                                 </div>
-                                                <p class="post-user-comment">{comment.post}</p>
+                                                <p className="post-user-comment">{comment.post}</p>
                                             </div>
                                         )
                                     })}

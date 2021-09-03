@@ -1,7 +1,15 @@
 const express = require('express');
 const app = express();
+const cors = require('cors');
+app.use((req,res,next) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    next();
+})
 app.use(express.json());
 const mongoose = require('mongoose');
+const { getNodeText } = require('@testing-library/react');
+
+app.options("*", cors());
 
 mongoose.connect('mongodb://localhost/refriends')
     .then(() => {console.log("Connected to database successfully!")})
@@ -34,4 +42,22 @@ app.get("/posts", async (req, res) => {
     }
 });
 
-app.listen(3000, () => {console.log("Server listening...")});
+app.post("/posts", async (req, res) => {
+    try{
+        const post = new Post({
+            username: req.body.username,
+            post: req.body.post,
+            date: Date.now(),
+            comments: []
+        });
+    
+        const result = await post.save();
+        res.status(200).send(result);
+    }
+    catch(ex) {
+        console.log(ex);
+        res.status(400).send(ex);
+    }
+});
+
+app.listen(3000, "0.0.0.0", () => {console.log("Server listening...")});
