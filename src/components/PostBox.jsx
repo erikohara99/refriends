@@ -34,7 +34,7 @@ class PostBox extends Component {
                 <form onSubmit={this.handleSubmitPost}>
                     <input id="postname" placeholder="Name"></input>
                     <textarea id="posttext" placeholder="Post text here..."></textarea>
-                    <h4 id="post-error">{this.state.error || null}</h4>
+                    <h4 className="error">{this.state.error || null}</h4>
                     <div id="postbox-buttons">
                         <button type="submit">SUBMIT</button>
                         <button type="reset">CLEAR</button>

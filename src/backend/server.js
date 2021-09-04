@@ -74,4 +74,25 @@ app.post("/posts", async (req, res) => {
     }
 });
 
+app.post("/comment", async (req, res) => {
+    try{
+        const post = await Post.findById(req.body.id);
+        console.log(post);
+        if(!post) return;
+
+        const comment = {
+            date: Date.now(),
+            post: req.body.comment
+        };
+
+        post.comments.push(comment);
+        const result = await post.save();
+        return res.status(200).send(result);
+    }
+    catch(ex) {
+        console.log(ex);
+        return res.status(400).send(ex);
+    }
+});
+
 app.listen(3000, "0.0.0.0", () => {console.log("Server listening...")});
