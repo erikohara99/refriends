@@ -42,6 +42,20 @@ app.get("/posts", async (req, res) => {
     }
 });
 
+app.get("/posts/:id", async (req, res) => {
+    try{
+        const posts = await Post
+            .find({})
+            .lean();
+        
+        res.status(200).send(posts);
+    }
+    catch(ex){
+        console.log("POSTS COULD NOT BE LOADED FROM DATABASE.");
+        res.status(500).send("POSTS COULD NOT BE LOADED FROM DATABASE.");
+    }
+});
+
 app.post("/posts", async (req, res) => {
     try{
         const post = new Post({

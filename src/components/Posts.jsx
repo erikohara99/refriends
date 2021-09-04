@@ -7,7 +7,7 @@ class Posts extends Component {
     }
 
     async componentDidMount() {
-        const response = await axios.get("http://108.183.209.49:3000/posts");
+        const response = await axios.get("http://192.168.0.174:3000/posts");
         console.log(response.data);
         this.setState({posts: response.data});
     }

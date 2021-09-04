@@ -13,13 +13,13 @@ class PostBox extends Component {
 
         var error = this.state.error;
 
-        if(post.length == 0 || name.length == 0){
+        if(post.length === 0 || name.length === 0){
             e.preventDefault();
             error = "POST ERROR: Neither field can be left blank. Try again.";
             return this.setState({error});
         };
 
-        const response = await axios.post("http://108.183.209.49:3000/posts", {
+        const response = await axios.post("http://192.168.0.174:3000/posts", {
             username: name,
             post: post
         });
