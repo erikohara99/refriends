@@ -1,70 +1,48 @@
-# Getting Started with Create React App
+# Refriends - an Anonymous Post and Reply App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## About
 
-## Available Scripts
+Refriends is an app that allows you to create posts and share them with other users, while receiving anonymous replies! No accounts are needed and no personal data is required - just fun!
 
-In the project directory, you can run:
+## How To Run
 
-### `npm start`
+### Step 0) Pre-Notice
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Depending on your operating system and multiple other factors, this app may be difficult to setup yourself. This app was not created to be fluctuating with multiple hosts, only myself. I apologize if the app setup does not work for yourself.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Step 1) Download files
 
-### `npm test`
+At the top of this repository, click the "Code" dropdown arrow, and select "Download Zip".
+Once downloaded, extract all the files to a folder of your choosing.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Step 2) Downloading Required Modules
 
-### `npm run build`
+For this app, NPM is used as the package manager. Inside of the `./src/` folder, open a terminal and type `npm install` to install all required modules. This may take a few minutes depending on internet speed.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Step 3) Port Forwarding (Optional)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+***If you wish to only use this for yourself, you may skip this step.***
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+This app is designed to be used across the internet, so port forwarding will allow other hosts or users to connect to your computer.
 
-### `npm run eject`
+You should only port forward if you understand the security risks that come with it. The following is a list of ***DEFAULT*** ports you will need to open:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- MongoDB Port: 27017
+- Node.JS Port: 3000
+- REACT Port: 5000
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Step 4) Setting Local IP
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+This app will run off of your local IPv4 address, so you need to modify the code as such. Inside of `./src/components/PostBox` and `./src/components/Posts`, you will need to exchange all instances of `192.168.0.174` for your local IPv4 address.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Step 5) Starting Servers
 
-## Learn More
+Follow the steps to run each server:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- REACT: In the `./src/` folder, open a terminal and type `npm start`.
+- Node.JS: In the `./src/` folder, open a terminal and type `node ./src/backend/server.js`.
+- MongoDB: Follow online instructions to install MongoDB for port 27017 for your system.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Step 6) Connect and Enjoy!
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+After all servers are running properly, go to any browser and go to the URL `http://YOUR_LOCAL_IPV4_ADDRESS_HERE:5000`.
